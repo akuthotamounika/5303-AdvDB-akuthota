@@ -1,0 +1,74 @@
+PUT    /riak/bucket/key
+
+GET    /riak/bucket/key
+
+DELETE /riak/bucket/key
+
+1)PUT :
+
+curl -XPUT 'http://cs2.mwsu.edu:8098/riak/food/favorite' \
+  -H 'Content-Type:text/plain' \
+  -d 'pizza'
+
+
+
+
+curl -XPUT 'http://cs2.mwsu.edu:8098/riak/semister/subjects' \
+  -H 'Content-Type:text/plain' \
+  -d 'dbms'
+
+
+inserting json data to riak:
+
+curl -v -X PUT http://cs2.mwsu.edu:8098/riak/news/news1 -H "Content-Type: application/json" -d '{"title”:”Myexperience with masters","author”:"Mounika","text”:"Mytextbook”}'
+
+curl -v -X PUT http://cs2.mwsu.edu:8098/riak/people -H "Content-Type: application/json" -d '{"name:me”}'
+
+
+
+put:(storing without a key)
+
+curl -v http://cs2.mwsu.edu:8098/buckets/test/keys \
+
+       -H "Content-Type: text/plain" -d 'HI’
+
+2)GET:
+
+curl -XGET 'http://cs2.mwsu.edu:8098/riak/food/favorite'
+
+when using -i flag then you get full response by curl
+
+curl -i -XGET 'http://cs2.mwsu.edu:8098/riak/food/favorite'
+
+
+
+3)POST:
+
+curl -i -XPOST 'http://cs2.mwsu.edu:8098/riak/people' \
+  -H 'Content-Type:application/json' \
+  -d '{"name":"mounika"}'
+
+
+4)DELETE:
+
+curl -XDELETE 'http://cs2.mwsu.edu:8098/riak/food/favorite'
+
+curl -XDELETE 'http://cs2.mwsu.edu:8098/riak/people/name'
+
+
+
+
+5)Listing all buckets in riak:
+
+
+curl 'http://cs2.mwsu.edu:8098/riak?buckets=true'
+
+
+5)LIST OF ALL KEYS IN BUCKET:
+
+curl -i http://cs2.mwsu.edu:8098/buckets/food/keys?keys=true
+
+curl -i http://cs2.mwsu.edu:8098/buckets/subject/keys?keys=true
+
+
+
